@@ -1,9 +1,10 @@
 import { treaty } from "@elysiajs/eden";
 import type { App } from "@/app/api/[[...slugs]]/route";
 
-const url =
-  process.env.NODE_ENV !== "production"
-    ? "localhost:3000"
-    : window.location.href;
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
-export const client = treaty<App>(url).api;
+if (!baseUrl) {
+  throw new Error("NEXT_PUBLIC_APP_URL is not set");
+}
+
+export const client = treaty<App>(baseUrl).api;
