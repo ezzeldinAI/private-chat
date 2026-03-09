@@ -8,15 +8,13 @@ import { Spinner } from "@/components/ui/spinner";
 import { useUsername } from "@/hooks/use-username";
 import { client } from "@/lib/client";
 
-const Page = () => {
+export default function Page() {
   return (
     <Suspense>
       <Lobby />
     </Suspense>
   );
-};
-
-export default Page;
+}
 
 function Lobby() {
   const { username } = useUsername();

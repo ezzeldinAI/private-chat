@@ -1,4 +1,9 @@
 import { treaty } from "@elysiajs/eden";
 import type { App } from "@/app/api/[[...slugs]]/route";
 
-export const client = treaty<App>("localhost:3000").api;
+const url =
+  process.env.NODE_ENV !== "production"
+    ? "localhost:3000"
+    : window.location.href;
+
+export const client = treaty<App>(url).api;
